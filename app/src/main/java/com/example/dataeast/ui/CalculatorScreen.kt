@@ -1,0 +1,64 @@
+package com.example.dataeast.ui
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.dataeast.viewmodel.CalculatorViewModel
+import com.example.dataeast.ui.components.CalculatorKeyboard
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CalculatorScreen(viewModel: CalculatorViewModel = viewModel()) {
+    val state by viewModel.uiState.collectAsState()
+
+    Scaffold(
+        topBar = {
+            TopAppBar(title = { Text("Калькулятор") })
+        }
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .padding(padding)
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
+            Text(
+                text = state.expression,
+                fontSize = 32.sp,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.End
+            )
+
+            Text(
+                text = state.result,
+                fontSize = 24.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp),
+                textAlign = TextAlign.End
+            )
+
+            CalculatorKeyboard(onSymbolClick = { symbol ->
+                viewModel.onSymbolEntered(symbol)
+            })
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text("История:", fontSize = 18.sp)
+            LazyColumn {
+                items(state.history) { entry ->
+                    Text("${entry.first} = ${entry.second}", fontSize = 16.sp)
+                }
+            }
+        }
+    }
+}
