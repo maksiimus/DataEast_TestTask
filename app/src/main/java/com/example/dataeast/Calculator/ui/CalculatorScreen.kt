@@ -1,4 +1,4 @@
-package com.example.dataeast.ui
+package com.example.dataeast.Calculator.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,8 +11,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.dataeast.viewmodel.CalculatorViewModel
-import com.example.dataeast.ui.components.CalculatorKeyboard
+import com.example.dataeast.Calculator.viewmodel.CalculatorViewModel
+import com.example.dataeast.Calculator.ui.components.CalculatorKeyboard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

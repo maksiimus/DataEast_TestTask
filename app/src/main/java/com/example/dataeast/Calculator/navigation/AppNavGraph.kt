@@ -1,12 +1,12 @@
-package com.example.dataeast.navigation
+package com.example.dataeast.Calculator.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.dataeast.ui.CalculatorScreen
-import com.example.dataeast.ui.MainScreen
+import com.example.dataeast.Calculator.ui.CalculatorScreen
+import com.example.dataeast.Calculator.ui.MainScreen
 
 sealed class Screen(val route: String) {
     object Main : Screen("main")

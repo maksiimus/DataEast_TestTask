@@ -1,4 +1,4 @@
-package com.example.dataeast.ui.theme
+package com.example.dataeast.Calculator.ui.theme
 
 import android.app.Activity
 import android.os.Build

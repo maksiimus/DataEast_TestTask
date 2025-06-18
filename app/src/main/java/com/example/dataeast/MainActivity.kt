@@ -8,10 +8,10 @@ import androidx.compose.material3.*
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.compose.rememberNavController
-import com.example.dataeast.navigation.AppNavGraph
-import com.example.dataeast.ui.components.DrawerContent
-import com.example.dataeast.navigation.Screen
-import com.example.dataeast.model.DrawerItem
+import com.example.dataeast.Calculator.navigation.AppNavGraph
+import com.example.dataeast.Calculator.ui.components.DrawerContent
+import com.example.dataeast.Calculator.navigation.Screen
+import com.example.dataeast.Calculator.model.DrawerItem
 import kotlinx.coroutines.launch
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.padding

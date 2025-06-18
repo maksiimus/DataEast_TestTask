@@ -1,10 +1,10 @@
-package com.example.dataeast.ui.components
+package com.example.dataeast.Calculator.ui.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.dataeast.model.DrawerItem
+import com.example.dataeast.Calculator.model.DrawerItem
 import androidx.compose.foundation.layout.Column
 import androidx.compose.ui.unit.dp
 

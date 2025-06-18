@@ -1,10 +1,10 @@
-package com.example.dataeast.viewmodel
+package com.example.dataeast.Calculator.viewmodel
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import com.example.dataeast.model.CalculatorState
-import com.example.dataeast.util.ExpressionEvaluator
+import com.example.dataeast.Calculator.model.CalculatorState
+import com.example.dataeast.Calculator.util.ExpressionEvaluator
 
 class CalculatorViewModel : ViewModel() {
 

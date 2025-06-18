@@ -1,4 +1,4 @@
-package com.example.dataeast.ui.components
+package com.example.dataeast.Calculator.ui.components
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable

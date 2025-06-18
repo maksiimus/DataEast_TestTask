@@ -1,4 +1,4 @@
-package com.example.dataeast.model
+package com.example.dataeast.Calculator.model
 
 data class CalculatorState(
     val expression: String = "",
