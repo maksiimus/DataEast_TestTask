@@ -1,4 +1,4 @@
-package com.example.dataeast.Calculator.ui
+package com.example.dataeast.common.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.dataeast.Calculator.navigation.Screen
+import com.example.dataeast.common.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

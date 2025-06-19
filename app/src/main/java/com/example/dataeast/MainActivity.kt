@@ -8,19 +8,26 @@ import androidx.compose.material3.*
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.compose.rememberNavController
-import com.example.dataeast.Calculator.navigation.AppNavGraph
+import com.example.dataeast.common.navigation.AppNavGraph
 import com.example.dataeast.Calculator.ui.components.DrawerContent
-import com.example.dataeast.Calculator.navigation.Screen
+import com.example.dataeast.common.navigation.Screen
 import com.example.dataeast.Calculator.model.DrawerItem
 import kotlinx.coroutines.launch
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.padding
+import com.yandex.mapkit.MapKitFactory
+import com.yandex.mapkit.search.*
 
 
 @ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        MapKitFactory.setApiKey("3a7d15d1-67ef-44b1-a8af-a3b6aa65ec7d")
+        MapKitFactory.initialize(this)
+        SearchFactory.initialize(this)
+
         setContent {
             val navController = rememberNavController()
             val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -28,7 +35,7 @@ class MainActivity : ComponentActivity() {
 
             val items = listOf(
                 DrawerItem("Калькулятор", Screen.Calculator.route),
-                DrawerItem("Задание 2", Screen.Task2.route),
+                DrawerItem("Геокодер", Screen.Geocoder.route),
                 DrawerItem("Задание 3", Screen.Task3.route),
                 DrawerItem("Задание 4", Screen.Task4.route),
                 DrawerItem("Задание 5", Screen.Task5.route),
@@ -64,5 +71,15 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        MapKitFactory.getInstance().onStart()
+    }
+
+    override fun onStop(){
+        MapKitFactory.getInstance().onStop()
+        super.onStop()
     }
 }
