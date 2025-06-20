@@ -45,7 +45,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation("androidx.compose.material3:material3:1.1.2")
-
+    implementation("org.locationtech.jts:jts-core:1.19.0")
     implementation ("com.yandex.android:maps.mobile:4.4.0-full")
 
 

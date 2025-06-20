@@ -36,8 +36,8 @@ class MainActivity : ComponentActivity() {
             val items = listOf(
                 DrawerItem("Калькулятор", Screen.Calculator.route),
                 DrawerItem("Геокодер", Screen.Geocoder.route),
-                DrawerItem("Задание 3", Screen.Task3.route),
-                DrawerItem("Задание 4", Screen.Task4.route),
+                DrawerItem("Кластеризация", Screen.Clastering.route),
+                DrawerItem("Полигоны", Screen.Polygon.route),
                 DrawerItem("Задание 5", Screen.Task5.route),
 
             )

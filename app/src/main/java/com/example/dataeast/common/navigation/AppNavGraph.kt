@@ -9,14 +9,16 @@ import androidx.navigation.compose.composable
 import com.example.dataeast.Calculator.ui.CalculatorScreen
 import com.example.dataeast.common.ui.MainScreen
 import com.example.dataeast.Geocoder.ui.GeocoderScreen
+import com.example.dataeast.clastering.ui.ClusteringScreen
 import androidx.compose.ui.unit.dp
+import com.example.dataeast.polygon.ui.PolygonScreen
 
 sealed class Screen(val route: String) {
     object Main : Screen("main")
     object Calculator : Screen("calculator")
     object Geocoder : Screen("geocoder")
-    object Task3 : Screen("task3")
-    object Task4 : Screen("task4")
+    object Clastering : Screen("clastering")
+    object Polygon : Screen("polygon")
     object Task5 : Screen("task5")
 }
 
@@ -26,5 +28,7 @@ fun AppNavGraph(navController: NavHostController, modifier: Modifier) {
         composable(Screen.Main.route) { MainScreen(navController) }
         composable(Screen.Calculator.route) { CalculatorScreen() }
         composable(Screen.Geocoder.route) { GeocoderScreen(padding = PaddingValues(0.dp)) }
+        composable(Screen.Clastering.route) { ClusteringScreen() }
+        composable(Screen.Polygon.route) { PolygonScreen()  }
     }
 }
