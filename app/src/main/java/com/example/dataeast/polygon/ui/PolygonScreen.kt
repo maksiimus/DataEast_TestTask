@@ -1,6 +1,5 @@
 package com.example.dataeast.polygon.ui
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -17,12 +16,10 @@ import androidx.compose.ui.graphics.Color
 fun PolygonScreen(viewModel: PolygonViewModel = viewModel()) {
     var step by remember { mutableStateOf(1) }
 
-    val context = LocalContext.current
-
     Column(
         modifier = Modifier
             .padding(16.dp)
-            .verticalScroll(rememberScrollState()) // ← прокрутка!
+            .verticalScroll(rememberScrollState())
     ) {
         Text("Полигон A:")
         if (!viewModel.isPolygonADrawn) {

@@ -27,7 +27,7 @@ object PolygonOperations {
         }.toMutableList()
 
         if (coordinates.first() != coordinates.last()) {
-            coordinates.add(coordinates.first()) // автозамыкание
+            coordinates.add(coordinates.first())
         }
 
         val linearRing = geometryFactory.createLinearRing(coordinates.toTypedArray())

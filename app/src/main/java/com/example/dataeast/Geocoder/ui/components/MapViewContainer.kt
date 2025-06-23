@@ -23,24 +23,20 @@ fun MapViewContainer(
     val mapView = remember {
         MapKitFactory.initialize(context)
         MapView(context).apply {
-            // начальное положение камеры
             map.move(
                 CameraPosition(Point(55.75, 37.61), 14.0f, 0.0f, 0.0f)
             )
         }
     }
 
-    // Обновляем карту при изменении точки
     LaunchedEffect(point) {
         mapView.map.mapObjects.clear()
 
-        // Добавляем маркер
         mapView.map.mapObjects.addPlacemark(
             point,
             ImageProvider.fromResource(context, R.drawable.ic_marker_red_48)
         )
 
-        // Перемещаем камеру
         mapView.map.move(
             CameraPosition(point, 14.0f, 0.0f, 0.0f),
             Animation(Animation.Type.SMOOTH, 1f),

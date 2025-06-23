@@ -29,7 +29,6 @@ object ExpressionEvaluator {
         return stack.pop()
     }
 
-    // Преобразование выражения в обратную польскую нотацию (Shunting Yard Algorithm)
     private fun toRPN(expression: String): List<String> {
         val output = mutableListOf<String>()
         val operators = Stack<Char>()
@@ -60,7 +59,7 @@ object ExpressionEvaluator {
                     while (operators.peek() != '(') {
                         output.add(operators.pop().toString())
                     }
-                    operators.pop() // Удаляем '('
+                    operators.pop()
                 }
             }
         }

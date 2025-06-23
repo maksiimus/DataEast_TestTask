@@ -47,6 +47,11 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.1.2")
     implementation("org.locationtech.jts:jts-core:1.19.0")
     implementation ("com.yandex.android:maps.mobile:4.4.0-full")
+    implementation ("org.boofcv:boofcv-android:0.43")
+    implementation ("org.boofcv:boofcv-core:0.43")
+    implementation ("org.boofcv:boofcv-io:0.43")
+    implementation ("org.boofcv:boofcv-ip:0.43")
+    implementation ("org.boofcv:boofcv-feature:0.43")
 
 
     implementation(libs.androidx.core.ktx)

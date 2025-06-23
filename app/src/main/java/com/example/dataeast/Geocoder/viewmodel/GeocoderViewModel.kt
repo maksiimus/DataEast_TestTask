@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 class GeocoderViewModel : ViewModel() {
 
-    private val _point = MutableStateFlow(Point(55.75, 37.61)) // Москва по умолчанию
+    private val _point = MutableStateFlow(Point(55.75, 37.61))
     val point: StateFlow<Point> = _point
 
     private val _address = MutableStateFlow("")
@@ -27,10 +27,9 @@ class GeocoderViewModel : ViewModel() {
         val query = _address.value
         if (query.isBlank()) return
 
-        // Область поиска: BoundingBox (окрестности Москвы)
         val boundingBox = BoundingBox(
-            Point(55.6, 37.3),  // Нижний левый угол
-            Point(55.9, 37.8)   // Верхний правый угол
+            Point(55.6, 37.3),
+            Point(55.9, 37.8)
         )
         val geometry = Geometry.fromBoundingBox(boundingBox)
 
@@ -46,7 +45,6 @@ class GeocoderViewModel : ViewModel() {
                 }
 
                 override fun onSearchError(error: com.yandex.runtime.Error) {
-                    // Здесь можно обработать ошибку
                 }
             }
         )

@@ -47,7 +47,7 @@ fun GeocoderScreen(padding: PaddingValues) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(250.dp)
+                .height(500.dp)
         ) {
             MapViewContainer(context = LocalContext.current, point = point)
         }

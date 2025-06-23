@@ -17,7 +17,7 @@ fun AddressHistoryList(
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(max = 200.dp) // ограничим по высоте
+            .heightIn(max = 100.dp)
     ) {
         items(history) { item ->
             Text(

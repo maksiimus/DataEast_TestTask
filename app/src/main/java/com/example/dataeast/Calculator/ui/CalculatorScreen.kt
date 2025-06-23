@@ -19,17 +19,30 @@ import com.example.dataeast.Calculator.ui.components.CalculatorKeyboard
 fun CalculatorScreen(viewModel: CalculatorViewModel = viewModel()) {
     val state by viewModel.uiState.collectAsState()
 
-    Scaffold(
-        topBar = {
-            TopAppBar(title = { Text("Калькулятор") })
-        }
-    ) { padding ->
+    Scaffold { padding ->
         Column(
             modifier = Modifier
                 .padding(padding)
                 .fillMaxSize()
-                .padding(16.dp)
         ) {
+            Text("История:", fontSize = 18.sp, modifier = Modifier.padding(16.dp))
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(horizontal = 16.dp)
+            ) {
+                items(state.history) { entry ->
+                    Text("${entry.first} = ${entry.second}", fontSize = 16.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
             Text(
                 text = state.expression,
                 fontSize = 32.sp,
@@ -50,15 +63,6 @@ fun CalculatorScreen(viewModel: CalculatorViewModel = viewModel()) {
             CalculatorKeyboard(onSymbolClick = { symbol ->
                 viewModel.onSymbolEntered(symbol)
             })
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Text("История:", fontSize = 18.sp)
-            LazyColumn {
-                items(state.history) { entry ->
-                    Text("${entry.first} = ${entry.second}", fontSize = 16.sp)
-                }
-            }
         }
     }
 }

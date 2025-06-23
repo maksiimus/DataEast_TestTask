@@ -3,6 +3,7 @@ package com.example.dataeast
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.*
 import androidx.compose.material.icons.filled.Menu
@@ -15,8 +16,11 @@ import com.example.dataeast.Calculator.model.DrawerItem
 import kotlinx.coroutines.launch
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.padding
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.search.*
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
 
 @ExperimentalMaterial3Api
@@ -30,6 +34,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val navController = rememberNavController()
+            val navBackStackEntry = navController.currentBackStackEntryAsState()
+            val currentRoute = navBackStackEntry.value?.destination?.route
             val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
             val scope = rememberCoroutineScope()
 
@@ -38,23 +44,43 @@ class MainActivity : ComponentActivity() {
                 DrawerItem("Геокодер", Screen.Geocoder.route),
                 DrawerItem("Кластеризация", Screen.Clastering.route),
                 DrawerItem("Полигоны", Screen.Polygon.route),
-                DrawerItem("Задание 5", Screen.Task5.route),
+                DrawerItem("Векторизатор", Screen.Vectorizer.route),
 
+            )
+
+            val screenTitles = mapOf(
+                Screen.Calculator.route to "Калькулятор",
+                Screen.Geocoder.route to "Геокодер",
+                Screen.Clastering.route to "Кластеризация",
+                Screen.Polygon.route to "Полигональные операции",
+                Screen.Vectorizer.route to "Векторизатор",
             )
 
             ModalNavigationDrawer(
                 drawerState = drawerState,
                 drawerContent = {
-                    DrawerContent(items) {
-                        navController.navigate(it.route)
-                        scope.launch { drawerState.close()}
+                    ModalDrawerSheet(
+                        drawerContainerColor = Color.White
+                    ) {
+                        Column {
+                            Text(
+                                text = "Меню",
+                                style = MaterialTheme.typography.titleLarge,
+                                modifier = Modifier.padding(bottom = 16.dp)
+                            )
+
+                            DrawerContent(items) {
+                                navController.navigate(it.route)
+                                scope.launch { drawerState.close() }
+                            }
+                        }
                     }
                 }
             ) {
                 Scaffold(
                     topBar = {
                         TopAppBar(
-                            title = {Text("DataEast")},
+                            title = {Text(screenTitles[currentRoute]?: "DataEast")},
                             navigationIcon = {
                                 IconButton (onClick = {
                                     scope.launch {drawerState.open() }

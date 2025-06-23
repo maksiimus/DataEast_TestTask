@@ -12,7 +12,7 @@ fun CalculatorKeyboard(onSymbolClick: (String) -> Unit) {
         listOf("4", "5", "6", "*"),
         listOf("1", "2", "3", "-"),
         listOf("0", "(", ")", "+"),
-        listOf("C", "=", "")
+        listOf("C", "=", "⌫", ".")
     )
 
     Column {
